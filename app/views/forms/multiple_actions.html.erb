@@ -1,0 +1,22 @@
+<%= form_with url: "update_multiple_actions", method: :post, authenticity_token: true do %>
+  <h2>Select emails</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% (1..10).each do |index| %>
+        <tr>
+          <td><%= check_box_tag "email_ids[]", index %></td>
+          <td>Subject for email <%= index %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div><%= submit_tag "Archive" %></div>
+  <div><%= submit_tag "Bulk Delete", formaction: "multiple_actions_delete" %></div>
+<% end %>

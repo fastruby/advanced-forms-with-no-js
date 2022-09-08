@@ -1,0 +1,42 @@
+<%= form_with url: "multiple_buttons", method: :post do %>
+  <h2>Create new Account</h2>
+  <%= radio_button_tag "step", "email-and-password", true, id: "show-email-and-password" %>
+  <div class="step">
+    Step 1: Connection
+    <br />
+    <%= label_tag do %>
+      Email <%= email_field_tag "email" %>
+    <% end %>
+    <br />
+    <%= label_tag "Next >", nil, class: "step-next", for: "show-personal-info" %>
+  </div>
+
+  <%= radio_button_tag "step", "personal-info", false, id: "show-personal-info" %>
+  <div class="step">
+    Step 2: Personal Info
+    <br />
+    <%= label_tag do %>
+      First Name: <%= text_field_tag "first_name" %>
+    <% end %>
+    <br />
+    <%= label_tag do %>
+      Last Name: <%= text_field_tag "last_name" %>
+    <% end %>
+    <br />
+    <%= label_tag "< Back", nil, class: "step-back", for: "show-email-and-password" %>
+    <%= label_tag "Next >", nil, class: "step-next", for: "show-extra" %>
+  </div>
+
+  <%= radio_button_tag "step", "extra", false, id: "show-extra" %>
+  <div class="step">
+    Step 3: Extra Info
+    <br />
+    <%= label_tag do %>
+      Favourite band: <%= text_field_tag "favourite_band" %>
+    <% end %>
+    <br />
+    <%= label_tag "< Back", nil, class: "step-back", for: "show-personal-info" %>
+    <%= submit_tag "Submit", class: "submit-multi-step" %>
+  </div>
+
+<% end %>

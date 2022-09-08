@@ -1,0 +1,21 @@
+<h2>Select emails</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Select</th>
+      <th>Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% (1..10).each do |index| %>
+      <tr>
+        <td><%= check_box_tag "email_ids[]", index, false, form: "my-form" %></td>
+        <td>Subject for email <%= index %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_with url: "elements_outside", method: :post, html: {id: "my-form"} do %>
+  <div><%= submit_tag "Submit" %></div>
+<% end %>

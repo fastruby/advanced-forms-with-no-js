@@ -1,0 +1,23 @@
+<%= form_with url: "multiple_buttons", method: :post do %>
+  <h2>Select emails</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% (1..10).each do |index| %>
+        <tr>
+          <td><%= check_box_tag "email_ids[]", index %></td>
+          <td>Subject for email <%= index %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div><%= button_tag "Mark as read", type: "submit", name: "pressed_button", value: "mark-read" %></div>
+  <div><%= button_tag "Mark as unread", type: "submit", name: "pressed_button", value: "mark-unread" %></div>
+  <div><%= button_tag "Archive", type: "submit", name: "pressed_button", value: "archive" %></div>
+<% end %>
